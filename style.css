@@ -1,0 +1,324 @@
+/* ===================================
+   ROOT COLORS
+=================================== */
+:root {
+  --primary: #00c6ff;
+  --secondary: #0072ff;
+  --accent: #38bdf8;
+  --dark: #0f172a;
+  --dark-2: #1e293b;
+  --light: #f8fafc;
+  --white: #ffffff;
+}
+
+/* ===================================
+   GLOBAL RESET
+=================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  color: white;
+  line-height: 1.6;
+  overflow-x: hidden;
+
+  background: linear-gradient(-45deg, #0f172a, #1e3a8a, #0284c7, #00c6ff);
+  background-size: 300% 300%;
+  animation: gradientBody 15s ease infinite;
+}
+
+/* Floating glow layer */
+body::before {
+  content: "";
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0,198,255,0.4) 0%, transparent 70%);
+  top: -200px;
+  right: -200px;
+  z-index: -1;
+  animation: floatGlow 10s ease-in-out infinite alternate;
+}
+
+@keyframes gradientBody {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes floatGlow {
+  from { transform: translateY(0px); }
+  to { transform: translateY(80px); }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===================================
+   NAVBAR
+=================================== */
+.navbar {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(16px);
+  height: 70px;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.logo-icon {
+  color: var(--primary);
+  font-size: 1.2rem;
+}
+
+.navbar__links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+.navbar__links a {
+  color: #e2e8f0;
+  font-weight: 500;
+  position: relative;
+}
+
+.navbar__links a::after {
+  content: "";
+  width: 0%;
+  height: 2px;
+  background: var(--primary);
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  transition: 0.3s;
+}
+
+.navbar__links a:hover {
+  color: white;
+}
+
+.navbar__links a:hover::after {
+  width: 100%;
+}
+
+/* ===================================
+   BUTTONS
+=================================== */
+.btn-primary {
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  box-shadow: 0 6px 20px rgba(0, 198, 255, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 198, 255, 0.6);
+}
+
+.btn-outline {
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  padding: 10px 24px;
+  border-radius: 30px;
+}
+
+.btn-outline:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* ===================================
+   HERO
+=================================== */
+.hero {
+  padding: 140px 20px 120px;
+  text-align: center;
+}
+
+.hero__badge {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid var(--primary);
+  padding: 6px 18px;
+  border-radius: 30px;
+  color: var(--primary);
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.hero__title {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.highlight {
+  color: var(--primary);
+}
+
+.hero__desc {
+  color: #e2e8f0;
+  margin-bottom: 30px;
+}
+
+/* ===================================
+   SECTION GLASS
+=================================== */
+.skills {
+  padding: 100px 0;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(18px);
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 32px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  text-align: center;
+  margin-bottom: 60px;
+  color: #cbd5e1;
+}
+
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+}
+
+/* ===================================
+   CARD PREMIUM
+=================================== */
+.skill-card {
+  background: rgba(255,255,255,0.1);
+  padding: 35px;
+  border-radius: 22px;
+  text-align: center;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 15px 45px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.skill-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(0,198,255,0.4);
+}
+
+.skill-card__icon {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+  color: var(--primary);
+}
+
+/* ===================================
+   FOOTER
+=================================== */
+.footer {
+  padding: 40px 0;
+  text-align: center;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(12px);
+}
+
+.footer__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer__brand {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.footer__contact {
+  display: flex;
+  gap: 22px;
+}
+
+.footer__contact a {
+  font-size: 1.5rem;
+}
+
+.footer__contact a:hover {
+  color: var(--primary);
+  transform: scale(1.25);
+}
+
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--primary);
+  padding: 8px 14px;
+  border-radius: 30px;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* ===================================
+   DARK MODE
+=================================== */
+.dark-mode {
+  background: linear-gradient(-45deg, #020617, #0f172a, #1e293b, #1e3a8a);
+  background-size: 300% 300%;
+  animation: gradientBody 15s ease infinite;
+}
+
+/* ===================================
+   RESPONSIVE
+=================================== */
+@media (max-width: 768px) {
+  .navbar__links {
+    display: none;
+  }
+
+  .hero__title {
+    font-size: 2.2rem;
+  }
+
+  .footer__inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
